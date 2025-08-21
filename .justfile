@@ -85,4 +85,7 @@ download-fonts link="https://www.dropbox.com/scl/fi/ejy8910blatsgpzvcyhf8/UnitOT
   # unzip -qod fonts UnitOT.zip
   rm -f UnitOT.zip
 
-init: pre-commit download-fonts
+patch-fonts:
+  fontforge -script ./scripts/patch_font_files.py "fonts/Unit OT" "fonts/Unit OT (patched)"
+
+init: pre-commit download-fonts patch-fonts
